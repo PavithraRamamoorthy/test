@@ -1,0 +1,92 @@
+24/01/2020 notes
+StudentDetails:
+
+mongo.exe
+
+show dbs
+
+use mydata
+
+createCollection("student")
+
+show collections
+
+db.student.insertMany([
+
+{"name":"pavithraramamoorthy", 
+"email":"pavithra.sai99@gmail.com", 
+"village":"SRK", 
+"age":22
+},
+
+{"name":"chenchusuresh",
+"email":"chenchu.sai99@gmail.com",
+"village":"SRK",
+"age":27
+},
+
+{"name":"sureshchenchu",
+"email":"chenchusuresh@gmail.com",
+"village":"SRK",
+"age":30
+},
+
+{"name":"chenchuramu",
+"email":"chenchuramu123@gmail.com", 
+"village":"katchur",
+"age":19
+}
+
+])
+
+
+
+db.student.update({"village" : "katchur"}, {"email" : "abc@gmail.com", "village"
+: "SRK" }).pretty()
+
+db.student.update({"name":"chenchuramu"}, {"name":"chenchuramu","email":"chenchuramu123@gmail.com","village" : "Katchur", "age":19})
+
+db.student.update({"village" : "Katchur"}, {$set: {"village" : "SRK" }})
+
+db.student.update({"village" : "Katchur"}, {"village" : "SRK" }, {upsert: true})
+
+db.student.find({"age":19},{"email":true,_id:false}).pretty()
+
+db.student.findOne({}, {_id:false}).pretty()
+
+db.student.update({"age": {$gt:20}}, {$unset : {"email":"pavithra.sai99@gmail.com"}})
+
+db.student.update({"village": "SRK"}, {$unset : {email:""}}, {multi: true})
+
+db.student.remove({"_id" : ObjectId("5e2ba19e8cef9facd6945151")}, {justOne:true})
+
+db.student.find({village: {$eq:"SRK"}})
+
+db.student.find({village: "SRK"})
+
+db.student.find({age: {$lt: 30}}).pretty()
+
+db.student.find({age: {$lte: 30}}).pretty()
+
+db.student.find({age: {$gt: 20}}).pretty()
+
+db.student.find({age: {$gte: 20}}).pretty()
+
+db.student.find({village: {$ne:"SRK"}}).pretty()
+
+db.student.find({village: {$in: ["SRK","Katchur"]}})
+
+db.student.find({village: {$nin: ["SRK","Katchur"]}}).pretty()  ->same as to the $ne
+
+
+
+
+
+
+
+
+
+
+
+
+

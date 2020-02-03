@@ -1,0 +1,71 @@
+Book details:
+
+mongo.exe
+
+show dbs
+
+use mydata
+
+createCollection("books")
+
+show collections
+
+db.books.insertMany([
+{
+	"Tittle":"Dbms",
+	"author":"pavi",
+	"year":2008
+},
+
+{
+	"Tittle":"Sql",
+	"author":"suresh",
+	"year":2012
+},
+
+{
+
+	"Tittle":"Mongodb",
+	"author":"chenchu",
+	"year":2014
+	
+},
+
+{
+	"Tittle":"Mysql",
+	"author":"chenchuramu",
+	"year":2015
+},
+
+{
+	"Tittle":"Oracle",
+	"author":"divya",
+	"year":2016
+},
+
+{
+	"Tittle":"Dbms",
+	"author":"kaviya",
+	"year":2010
+}
+
+])
+
+
+db.books.find( { $or: [{year: {$lte: 2010}}, {year: {$eq: 2016}}]} )
+
+db.books.find( { $and: [{year: {$gt: 2010}}, {year: {$eq: 2016}}]} )
+
+db.books.find( { $and: [{year: {$gt: 2010}}, {author:$exists:true}} ]} ).pretty()
+
+db.books.find( { year: {$not : {$gt:2010}}}).pretty()
+
+db.books.find( { year: {$not : {$gt:2015}}}).pretty()
+
+db.books.find( { $nor: [{year: {$lte: 2010}}, {year: {$eq: 2016}}]} )
+
+db.books.find( {$not: {year: {$eq: 2016} }})
+
+db.books.find( {year: {$type: 2 }}).pretty()
+
+db.books.find({author:{$exists:true}}).pretty()

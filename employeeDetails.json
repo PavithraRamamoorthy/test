@@ -1,0 +1,133 @@
+
+mongo.exe
+
+show dbs
+
+use mydata
+
+show dbs
+
+db.createcollection("employee");
+
+show collections
+
+db.details.insertMany([
+
+{
+
+	"empid":101,
+
+    "empName":
+     {
+		"firstName": "pavithra",
+		"lastName": "Ramamoorthy"
+	 },
+		"department":"web developer",
+    "address":
+     {
+		"street": "148,ramar street",
+		"postal": "Srirama kuppam ",
+		"city": "chennai",
+		"state": "tamilnadu",
+		"pinCode": "602026"
+	 },
+	"age": 22,
+	"email":"pavithra.sai99@gmail.com",
+	"gender":"female",
+	"phoneNumber":[{"number":"9445438865"},{"number":"7892117728"}],
+},
+
+
+
+{
+	"empid":102,
+
+    "empName": 
+    {
+		"firstName": "chenchamma",
+		"lastName": "Ramamoorthy"
+	},
+		"department":"Sowftware Developer",
+    "address": 
+    {
+		"street": "148,ramar street",
+		"postal": "Srirama kuppam ",
+		"city": "chennai",
+		"state": "tamilnadu",
+		"pinCode": "602026"
+	},
+	"age": 28,
+	"email":"chenchu.sai99@gmail.com",
+	"gender":"female",
+	"phoneNumber":"7892117728",
+	
+},
+
+
+{
+	"empid":103,
+
+    "empName": 
+    {
+		"firstName": "suresh",
+		"lastName": "Munusawmy"
+	},
+	"department":"testing",	
+    "address":
+    {
+		"street": "1ramar street",
+		"postal": "Srirama kuppam ",
+		"city": "chennai",
+		"state": "tamilnadu",
+		"pinCode": "602026"
+	},
+	"age": 30,
+	"email":"sureshchenchu@gmail.com",
+	"gender":"male",
+	"phoneNumber":"9590881840",
+},
+
+
+])
+
+db.employee.find({"age":{$gt:25}}).pretty()
+
+db.employee.find({"empid":{$gt:100}}).pretty()
+
+db.employee.find({"Id":{$lt:3000}}).pretty()
+
+db.employee.find({"empid":{$ne:102}}).pretty()
+
+db.employee.find({"age":{$gte:25}}).pretty()
+
+db.employee.find({"age":{$lte:22}}).pretty()
+
+db.employee.find({"age":{$eq:22}})
+
+db.employee.find({"age":{$in:22}})
+
+db.employee.find({"age":{$nin:28}})
+
+db.employee.find({"age":22},{"department":true,_id:false})
+
+db.employee.find({},{_id:false})
+
+db.employee.update({"phoneNumber":"7892117728"},{$set:{"phoneNumber":"9444363865"}},{multi:true})
+
+db.employee.find({empid : {$gt:100}}).limit(1).pretty()
+
+db.employee.find({empid : {$gt:100}}).limit(1).skip(1).pretty()
+
+db.employee.find({}, {"empid": 1, }).sort({"empid": -1})
+
+db.employee.find().sort({"age":1}).pr
+
+db.employee.find({},{"age":1}).sort({"age":1})
+
+db.employee.find({},{"empName":1}).sort({"empName":1})
+
+db.employee.getIndexes()
+
+
+
+
